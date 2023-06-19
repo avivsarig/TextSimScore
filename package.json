@@ -1,13 +1,19 @@
 {
   "name": "textsimscore",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Node.js application to analyze an array of text strings and return the probability of each string belonging to a cluster of similar texts.",
   "main": "main.js",
   "scripts": {
     "start": "node main.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "text analysis",
+    "string similarity",
+    "levenshtein",
+    "probability",
+    "node.js"
+  ],
+  "author": "Aviv Sarig <avivs15@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "js-levenshtein": "^1.1.6"

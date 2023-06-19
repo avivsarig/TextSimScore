@@ -12,11 +12,11 @@ function rankSet() {
         throw 'Please provide a path to a valid JSON file';
     }
 
-    const resembleMatrix = rankText(data);
-    const weightedRes = calcMatrix(resembleMatrix);
+    const rankMatrix = rankText(data);
+    const weightedRes = calcMatrix(rankMatrix);
 
     return weightedRes;
 }
 
-res = rankSet();
-console.log(res);
+weightedRes = rankSet();
+console.log(weightedRes);
