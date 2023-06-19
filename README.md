@@ -1,37 +1,33 @@
-## TextSimScore
-# Text Similarity Analyzer
+# README.md
 
-This repository contains an algorithm for comparing and measuring the similarity between strings. Given a set of strings representing email body texts, the algorithm calculates a list of similarity scores for each text in the set, indicating their resemblance to the rest of the texts.
+## Description
 
-## Assumption and Layout
+This Node.js application is designed to analyze an array of strings and return the probability that each string belongs to a cluster of highly similar texts. This application reads data from a JSON file, calculates a rank matrix based on the similarity of strings, and subsequently computes a probability vector indicating the chance of each string being part of a cluster.
 
-- **Input:**
-  - Set of strings
-  - Length N
-  - Each string represents an email body text
+## Modules
 
-- **Output:**
-  - List of floats
-  - Length N
-  - Floats between 0 and 1, representing the corresponding text's similarity to the rest of the texts in the set
+### main.js
 
-## Outlay
+This is the entry point of the application. It reads the input JSON data file, calculates the rank matrix using the `rankText` function from the `rank.js` module, and calculates the probability vector using the `calcMatrix` function from the `calc.js` module. It prints the final probability vector to the console.
 
-1. Go over the Set of texts - one by one
-2. Compare each text with each of the other texts
-3. Create a **Matrix of resemblance** (symmetric)
-4. Calculate the **strength** of each vector in the matrix
-5. Return a list of **strengths**
+### rank.js
 
-## Implementation
+This module is responsible for creating a rank matrix that indicates the similarity between each pair of strings in the input data. It uses the Levenshtein distance to calculate the similarity and ensures that the ratio of lengths between two strings does not exceed a predefined maximum length ratio.
 
-1. **For** loop
-2. To be determined:
-    - **Levenshtein distance** rather than Cosine similarity
-    - **Letters** rather than words
-    - Ignore punctuation
-3. Array of arrays
-4. To be determined:
-    - Average
-    - Maximum
-    - Weighted mean
+### calc.js
+
+This module calculates a probability vector from the rank matrix. The probability assigned to each string is the maximum between the mean and the median of the highest-ranking similarities for that string. If a string does not have a minimum number of similar strings, it is assigned a probability of 0.
+
+## Usage
+
+To use this application, follow the steps below:
+
+1. Clone this repository or download the source code.
+2. Install dependencies with `npm install`.
+3. Run the application with `npm run start <path to your JSON data file>`. Please ensure that your JSON data file is a valid array of strings.
+
+Please note that the constants `MAX_LENGTH_RATIO`, `NUM_RELEVANT_ELEMENTS`, `MIN_THRESHOLD`, and `MIN_IN_CLUSTER` in `config.js` can be adjusted according to your clustering requirements. These constants control the sensitivity of the clustering and ranking process.
+
+## Dependencies
+
+This application depends on the [js-levenshtein](https://www.npmjs.com/package/js-levenshtein) package for calculating the Levenshtein distance, which is a measure of the difference between two strings.
