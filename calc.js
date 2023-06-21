@@ -1,6 +1,16 @@
 const { NUM_RELEVANT_ELEMENTS, MIN_THRESHOLD, MIN_IN_CLUSTER } = require('./config.js');
 
 function calcMatrix(matrix) {
+    /**
+     * Sorts each row of the input matrix in descending order and then computes a "probability vector" based on certain conditions and operations on each row.
+     * Specifically, it calculates the max value between the mean and the median of the first NUM_RELEVANT_ELEMENTS elements in each row, provided these elements meet a certain condition defined by MIN_THRESHOLD and MIN_IN_CLUSTER.
+     *
+     * @param {Array} matrix - A 2D matrix (an array of arrays). Each inner array is a row in the matrix.
+     *
+     * @returns {Array} - Returns a "probability vector". Each element in this vector corresponds to a row in the input matrix 
+     * and represents a value calculated based on the conditions and operations as described above.
+    */
+
     const matrixSize = matrix.length;
     for (let i = 0; i < matrixSize; i++) {
         matrix[i].sort((a, b) => b - a);

@@ -2,6 +2,14 @@ const { MAX_LENGTH_RATIO } = require('./config.js');
 const levenshtein = require('js-levenshtein');
 
 function rankText(data) {
+    /**
+     * Calculates the similarity rank between each pair of text entries in the provided array. The rank is calculated based on the Levenshtein distance, considering only the pairs whose lengths are not too disparate (as determined by the MAX_LENGTH_RATIO constant from the config file).
+     * The similarity rank is a value between 0 and 1, with 1 being identical strings,and 0 being entirely dissimilar.
+     *
+     * @param {Array} data - An array of text entries to rank.
+     *
+     * @returns {Array} - Returns a 2D matrix where each cell [i][j] represents the similarity rank between data[i] and data[j].
+     */
     n = data.length;
     const matrix = Array(n).fill().map(() => Array(n).fill());
 
