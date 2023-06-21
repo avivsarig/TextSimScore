@@ -4,7 +4,8 @@
   "description": "A Node.js application to analyze an array of text strings and return the probability of each string belonging to a cluster of similar texts.",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "test": "jest"
   },
   "keywords": [
     "text analysis",
@@ -16,6 +17,7 @@
   "author": "Aviv Sarig <avivs15@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "jest": "^29.5.0",
     "js-levenshtein": "^1.1.6"
   }
 }

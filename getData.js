@@ -16,7 +16,7 @@ function getFromFile(path) {
 }
 
 function rawToData(rawArray) {
-    return rawArray.map(str => str.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").toLowerCase());
+    return rawArray.map(str => str.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\s]/g, "").toLowerCase());
 }
 
 function fileToData(path) {
